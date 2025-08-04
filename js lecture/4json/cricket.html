@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      body {
+        background-color: #555;
+        display: flex;
+        justify-content: center;
+      }
+      .b1,
+      .b2,
+      .b3 {
+        background-color: antiquewhite;
+        border-radius: 18px rgb(128, 8, 8);
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <button
+      id="bat"
+      class="b1"
+      onclick=" let userChoice = 'bat' ; let computer_choice = ComputerChoice(); let result = Result(userChoice,computer_choice);
+       showresult();
+
+      "
+    >
+      BAT
+    </button>
+    <button
+      class="b2"
+      onclick="userChoice = 'ball' ; computer_choice = ComputerChoice(); result = Result(userChoice,computer_choice);
+      console.log(`your choice ${userChoice};computer choice is ${computer_choice};the final result is ${result}`);
+      console.log(score);"
+    >
+      ball
+    </button>
+
+    <script>
+       let lastscore = JSON.parse(localStorage.getItem('score_object'));
+       let score;
+       console.log(lastscore);
+       if (lastscore !== 'undefine'){
+        score = lastscore;
+       }else{
+      score = {
+        win: 0,
+        lost: 0,
+        tie: 0,
+      }
+    };
+      function ComputerChoice() {
+        let random_no = Math.random() * 3;
+        if (random_no <= 1) {
+          return (computer_choice = "bat");
+        } else if (random_no >= 2 && random_no <= 3) {
+          return (computer_choice = "ball");
+        } else {
+          return (computer_choice = "stamp");
+        }
+      }
+
+      function Result(userChoice, computer_choice) {
+        if (userChoice == "bat") {
+          if (computer_choice == "ball") {
+            score.win++;
+            //    localstorage.setItem("won", score.win);
+            return "you won";
+          } else if (computer_choice == "stamp") {
+            score.lost++;
+            return "you lost the match";
+          } else if (computer_choice == "bat") {
+            score.tie++;
+            return "this is tie";
+          }
+        } else if (userChoice == "ball") {
+          if (computer_choice == "bat") {
+            score.lost++;
+            return "you loss";
+          } else if (computer_choice == "stamp") {
+            score.win++;
+            return "you won";
+          } else if (computer_choice == "ball") {
+            score.tie++;
+            return "this is tie";
+          }
+        }
+      }
+
+      function showresult() {
+        localStorage.setItem("score_object", JSON.stringify(score));
+        return alert(`the score is ${JSON.stringify(score)}`);
+      }
+    </script>
+  </body>
+</html>

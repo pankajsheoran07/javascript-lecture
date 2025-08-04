@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj1 = {
+            company : 'A E G O N',
+            product : 't-shirt',
+            prize : 40, 
+
+            rating : {
+                reviews : 40,
+                stars : 4.5,
+                'photos uploded' : 20,
+
+            }, 
+
+
+            display(){
+                return obj1.rating.reviews;
+            },
+
+       
+
+        }
+        let {company,product,prize} = obj1;//it is same as (let comapany = obj1.company , let product = obj1.product)
+        console.log(company);
+        let re  = obj1.display();
+        console.log(re);
+    </script>
+</body>
+</html>

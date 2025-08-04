@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+      
+      background-color: aqua;
+        }
+        .c1{
+            display: flex;
+            flex-direction:column;
+            background-color: rgb(0, 0, 0);
+            color: bisque;
+             background-image:url("hello.png");
+             background-position: center;
+             background-repeat: no-repeat;
+            background-size: cover;
+            /* background-size: ; */
+  
+
+            margin: 0px;
+            padding: 40px;
+            height: 400px;
+            justify-content:center;
+            /* background-image:url(QUANTA-X(2)); */
+            /* align-items: center; */
+        }
+        .add,.list,.checkout{
+            margin: 0px;
+            padding:4px;
+            border:px;
+            border-color: rgb(255, 255, 255);
+            background-color: rgb(210, 20, 20);
+            color: rgb(255, 255, 255);
+        }
+        .c1 h1 {
+     background-color: black;
+     display: flex;
+     justify-content: center;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+    </style>
+</head>
+<body>
+    <div class="c1">
+    <div class = "buttons">
+    <button class="add" onclick = "cart_items++; document.querySelector('#line').innerText = `you bag has ${cart_items}`">add an item</button>
+    <button class="list" onclick = "cart_items--; document.querySelector('#line').innerText = `you bag has ${cart_items}`">make a whislist</button>
+    <button class="checkout" onclick = "alert('total item done')">checkout</button>
+</div>
+     <h1 id = "line">you bag has an item</h1>
+    </div>
+    <script>
+        let cart_items = 0;
+        document.querySelector('#line').innerText='Your Bag has yw items';
+        console.log(cart_items);
+    </script>
+</body>
+</html>
