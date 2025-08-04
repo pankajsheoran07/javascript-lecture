@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let product = {
+        name: "Tshirt",
+        price: 789,
+        rating: {
+          stars: 4.5,
+          noOfReviews: 453,
+        },
+      };
+      localStorage.setItem("Pankaj", "Sheoran"); //setItem method of  localstorage
+
+      localStorage.setItem("the object", JSON.stringify(product)); //turn the data into string form means it converts the javascript data to the json.
+      console.log(localStorage.getItem("the object")); //getItem method of  localstorage
+
+      let parsed_data = JSON.parse(localStorage.getItem("the object")); //it will store that data which turned json to javascript object
+      console.log(parsed_data);
+
+      localStorage.removeItem("Pankaj");
+
+      // localStorage.clear(product);
+    </script>
+  </body>
+</html>

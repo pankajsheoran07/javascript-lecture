@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let a = 6;
+      let y = a; //pass by value
+
+      console.log(`this is  originalc value of a ${a}`);
+      console.log(`this is value of y before changing the value of  a ${y}`);
+      a = 8;
+      console.log(`this is new_value of a ${a}`);
+      console.log(`this is value of y after changing value of a ${y}`);
+
+      let obj1 = {
+        //obj1 is here not a varible which stores just the value of number it is reference to the address of number,
+        number: 2,
+      };
+      let u = obj1.number; // here u is having the value of obj1.number not refrencing () it does not have any address  of the  number,
+      let obj2 = obj1; //obj2 is here not a varible which stores just the value of number it is reference to the address of number,
+      console.log(
+        `this your value of u before changing the original value  of number ${u}`
+      );
+      console.log(
+        `this your value of obj2 before changing the original value  of number ${obj2.number}`
+      );
+
+      obj1.number = 4;
+      console.log(
+        `this your value of u after changing the original value of number ${u}`
+      );
+      console.log(
+        `this your value of obj2 after changing the original value of number ${obj2.number}`
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cricket project</title>
+    <style>
+        body{
+            background-color: #555;
+            display: flex;
+            justify-content: center;
+
+        }
+        .b1,.b2,.b3{
+            background-color: antiquewhite;
+            border-radius: 18px rgb(128, 8, 8); 
+            margin:5px;
+        }
+    </style>
+</head>
+<body >
+    <button id = 'bat' class="b1"
+    onclick = "console.log('you chosed bat');
+    let random_no = Math.random()*3;
+    let computer_choice;
+
+    let result; 
+    if(random_no <=1 ){
+        computer_choice = 'BAT';
+      
+    }
+    else if(random_no >= 2 && random_no <= 3 ) {
+        computer_choice = 'ball';
+       
+
+    }else{
+        computer_choice = 'stamp';
+      
+    }
+    console.log `Computer has chosen the ${computer_choice}`;
+    if(computer_choice === 'ball'){
+        result = 'you won';
+    } else if (computer_choice === 'BAT'){
+
+        result = 'this is tie';
+    } else{
+        result = 'computer won';
+    }
+    alert(`you hve choosed bat and computer's choice is ${computer_choice} and the final result is ${result}` );
+    "
+    > BAT </button>
+
+
+   <button class="b2" onclick="console.log('you choosed the ball');">ball</button>
+    
+    
+</body>
+</html>

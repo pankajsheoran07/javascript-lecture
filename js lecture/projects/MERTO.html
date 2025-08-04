@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let price = 30;
+        let age =  10;
+        let gender = 'male';
+    
+        if(gender === 'female'){
+            let price = 15;
+          if(age<10){
+            console.log('you can travel free');
+
+          } else if(age>10 && age<65){
+            console.log(`you have pay rs ${price  - price * 50/100} for travelling`);
+          } else if(age >=65){
+             console.log(`you have pay rs ${price - price*30/100} for travelling`);
+          }
+        } else{
+            if(age<=10){
+            console.log('you can travel free');
+
+          } else if(age>10 && age<65){
+            console.log(`you have pay rs ${price} for travelling`);
+          } else if(age >=65){
+             console.log(`you have pay rs ${price - price*30/100} for travelling`);
+          }
+        }
+    </script>
+</body>
+</html>
