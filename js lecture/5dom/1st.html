@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      body {
+        background-color: #555;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        /* align-items:; */
+      }
+
+      .bat1 {
+        height: 100px;
+      }
+
+      .b11,
+      .b12 {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 7px;
+        /* padding-left: 40px; */
+      }
+
+      .b1 {
+        background-color: antiquewhite;
+        border-radius: 18px rgb(128, 8, 8);
+        margin-right: 53px;
+      }
+      .b2 {
+        background-color: antiquewhite;
+        border-radius: 18px rgb(128, 8, 8);
+        margin-left: 4pc;
+      }
+      .b3 {
+        background-color: antiquewhite;
+        border-radius: 18px rgb(128, 8, 8);
+        margin-left: 5pc;
+      }
+      .b1:hover {
+        background-color: black;
+        color: white;
+        border-bottom: 2px solid red;
+        /* transition: 0.5ms; */
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      .b2:hover {
+        background-color: black;
+        color: white;
+        border-bottom: 2px solid red;
+        /* transition: 0.5ms; */
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      .b3:hover {
+        background-color: black;
+        color: white;
+        border-bottom: 2px solid red;
+        /* transition: 0.5ms; */
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      .uu {
+        margin-left: 40px;
+      }
+      .lines {
+        display: flex;
+        /* justify-content: space-around; */
+        /* flex-direction: column; */
+      }
+      .uu1 {
+        margin-left: 40px;
+        padding-top: 4px;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="b11">
+      <img src="../photos/bat.webp" class="bat1" />
+      <img src="../photos/ball.webp" class="bat1" />
+      <img src="../photos/stamp.jpg" class="bat1" />
+    </div>
+
+    <div class="b12">
+      <button
+        class="b1"
+        onclick=" let userChoice = 'bat' ; let computer_choice = ComputerChoice(); let result = Result(userChoice,computer_choice);console.log(result);showresult();"
+      >
+        BAT
+      </button>
+
+      <button
+        id="ball"
+        class="b2"
+        onclick="  userChoice = 'ball' ; computer_choice = ComputerChoice();  result = Result(userChoice,computer_choice);console.log(result);
+       showresult();"
+      >
+        ball
+      </button>
+
+      <button class="b3" id="reset" onclick=" resetResult();">reset</button>
+    </div>
+    <div class="lines">
+      <h1 class="uu">score:</h1>
+      <h3 class="uu1">START THE GAME</h3>
+    </div>
+
+    <script>
+      let lastscore = JSON.parse(localStorage.getItem("score_object"));
+      let score;
+      
+      if (lastscore !== null ) {
+       score = lastscore;
+      } else {
+          score = {
+          win: 0,
+          lost: 0,
+          tie: 0,
+        };
+      }
+      function ComputerChoice() {
+        let random_no = Math.random() * 3;
+        if (random_no <= 1) {
+          return (computer_choice = "bat");
+        } else if (random_no >= 2 && random_no <= 3) {
+          return (computer_choice = "ball");
+        } else {
+          return (computer_choice = "stamp");
+        }
+      }
+
+      function Result(userChoice, computer_choice) {
+        if (userChoice == "bat") {
+          if (computer_choice == "ball") {
+            score.win++;
+          
+            return "you won";
+          } else if (computer_choice == "stamp") {
+            score.lost++;
+            return "you lost the match";
+          } else if (computer_choice == "bat") {
+            score.tie++;
+            return "this is tie";
+          }
+        } else if (userChoice == "ball") {
+          if (computer_choice == "bat") {
+            score.lost++;
+            return "you loss";
+          } else if (computer_choice == "stamp") {
+            score.win++;
+            return "you won";
+          } else if (computer_choice == "ball") {
+            score.tie++;
+            return "this is tie";
+          }
+        }
+      }
+      function resetResult() {
+        score = {
+          win: 0,
+          lost: 0,
+          tie: 0,
+        };
+        document.querySelectorAll(".uu1")[0].innerText = `playgame game again if not playing first time`;
+        
+      }
+
+      function showresult() {
+        localStorage.setItem("score_object", JSON.stringify(score));
+        document.querySelectorAll(".uu1")[0].innerText = `🏆 ${score.win} | ❌ ${score.lost} | 🤝 ${score.tie}`;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+   <style> 
+   body{
+background-color: rgb(56, 54, 54);
+   }
+   </style>
+  </head>
+  <body>
+    <button onclick="infinity();">click me if you dare</button>
+    <script>
+      // create an array of numbers [5,6]. add 4 at the beginning and 7 at the end of the array.
+    
+    let a1 = [5,6];
+    a1.push(7);
+    
+    a1.unshift(4)
+        console.log(a1);  
+        //create an array in which a function is made to retue a value at aspecific index                 
+ function retrn(a1,position){
+  console.log('hello');
+  return a1[position -1];
+ }
+console.log(retrn(a1,4));
+
+//use slice method to get specific range of values in the array;
+let a2;// slice method creates copy of array
+function slicemethod(a1){
+  a2 = a1.slice(0,a1.length-1);
+  // return a2;
+  console.log(a2);
+}
+slicemethod(a1);
+//create a while loop that exits sxits after counting 5 prime numbers 
+
+    </script>
+  </body>
+</html>

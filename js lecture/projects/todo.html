@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: rgb(38, 35, 35);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* Align content to the top */
+        min-height: 100vh; /* Allow body to grow beyond screen height */
+        width: 100%;
+        align-items: center;
+        padding-top: 20px; /* Optional: adds some space at the top */
+        box-sizing: border-box; /* Optional: ensures padding doesn't add to height */
+      }
+      .taskcontainer {
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(162, 163, 163);
+        color: black;
+        border-radius: 10px;
+      }
+      .inputeContainer {
+        height: 40px;
+      }
+
+      .work {
+        margin-right: 40px;
+        padding: 10px;
+        border-style: none;
+        border-radius: 3px;
+        /* color: white; */
+      }
+      
+      .task {
+        height: 100vh;
+      }
+      .hello {
+        margin: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .hello:hover{
+               background-color:   rgb(38, 35, 35);
+               padding: 20px;
+
+               border: 2px solid rgb(255, 255, 255);
+               border-radius: 90px;
+               transition: all 0.4s ease-in-out;
+               color:aliceblue;
+      }
+      .date1 {
+        margin-top: 9px;
+        margin-right: 40px;
+        color: rgb(15, 14, 14);
+      }
+      .event:hover {
+        /* background-color: black; */
+        color: rgb(0, 0, 0);
+        padding: 8px;
+        transition: all 0.4s ease-in-out;
+        border-bottom: 2px solid red;
+        border-right: 2px solid red;
+        border: 2px solid red;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .delete:hover {
+        background-color: rgb(177, 0, 0);
+        color: rgb(0, 0, 0);
+        padding: 8px;
+        transition: all 0.4s ease-in-out;
+        border-bottom: 2px solid rgb(0, 0, 0);
+        border-right: 2px solid rgb(0, 0, 0);
+        border-left: 2px solid rgb(0, 0, 0);
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .add:hover {
+        background-color: rgb(0, 229, 46);
+        color: rgb(0, 0, 0);
+        padding: 8px;
+        transition: all 0.4s ease-in-out;
+        border-bottom: 2px solid red;
+        border-right: 2px solid red;
+        border-left: 2px solid red;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="inputeContainer">
+      <input type="box" placeholder="enter your task here" class="event" />
+      <input type="date" class="date" />
+      <span><button class="add" onclick="todoList();">ADD</button></span>
+    </div>
+
+    <div class="taskcontainer"></div>
+
+    <script>
+      //  let a1 = []
+
+      let displayEven;
+      let i = 0;
+      let displayDate;
+      let tasks;
+
+      let a1 = JSON.parse(localStorage.getItem("array1")) || [];
+
+      //  displayworks();
+
+      function todoList() {
+        displayEvent = document.querySelector(".event");
+        displayEvent = displayEvent.value;
+        displayDate = document.querySelector(".date");
+        displayDate = displayDate.value;
+        localStorage.clear();
+        a1.push({
+          name: displayEvent,
+          date: displayDate,
+        });
+        console.log(a1);
+
+        localStorage.clear("array1");
+        localStorage.setItem("array1", JSON.stringify(a1));
+
+        displayworks();
+        displayEvent = "";
+        displayDate = "";
+      }
+
+      function displayworks() {
+        tasks = document.querySelector(".taskcontainer");
+        tasks.innerHTML;
+        tasks.innerHTML = "";
+        for (i = 0; i < a1.length; i++) {
+          let { name, date } = a1[i];
+          tasks.innerHTML += `
+          <div class = 'hello'>
+              <span class = 'work'>${name}</span>
+              <span class = 'date1'>${date}</span>
+              <button class="delete"  onclick="deletetask(${i})">DELETE</button>
+         </div>
+          `;
+        }
+      }
+      function deletetask(i) {
+        a1.splice(i, 1);
+        localStorage.setItem("array1", JSON.stringify(a1));
+
+        displayworks();
+      }
+    </script>
+  </body>
+</html>

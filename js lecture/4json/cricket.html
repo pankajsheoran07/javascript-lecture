@@ -24,7 +24,7 @@
     <button
       id="bat"
       class="b1"
-      onclick=" let userChoice = 'bat' ; let computer_choice = ComputerChoice(); let result = Result(userChoice,computer_choice);
+      onclick=" let userChoice = 'bat' ; let computer_choice = ComputerChoice(); let result = Result(userChoice,computer_choice);console.log(result);
        showresult();
 
       "
@@ -32,27 +32,31 @@
       BAT
     </button>
     <button
-      class="b2"
-      onclick="userChoice = 'ball' ; computer_choice = ComputerChoice(); result = Result(userChoice,computer_choice);
-      console.log(`your choice ${userChoice};computer choice is ${computer_choice};the final result is ${result}`);
-      console.log(score);"
-    >
+       id="bat"
+      class="b1"
+      onclick="  userChoice = 'ball' ; computer_choice = ComputerChoice();  result = Result(userChoice,computer_choice);console.log(result);
+       showresult();">
+
       ball
     </button>
+
+
+    <button class = 'b1' id = 'reset' onclick =" resetResult();"> reset </button>
 
     <script>
        let lastscore = JSON.parse(localStorage.getItem('score_object'));
        let score;
        console.log(lastscore);
-       if (lastscore !== 'undefine'){
+       if (lastscore !== 'undefine'){ 
         score = lastscore;
-       }else{
-      score = {
+        
+       } else{
+     score = {
         win: 0,
         lost: 0,
-        tie: 0,
-      }
-    };
+        tie: 0
+      };
+      };
       function ComputerChoice() {
         let random_no = Math.random() * 3;
         if (random_no <= 1) {
@@ -89,6 +93,13 @@
             return "this is tie";
           }
         }
+      }
+      function resetResult(){
+        localStorage.clear('score_object');
+        score.win = 0;
+        score.lost = 0;
+        score.tie = 0;
+
       }
 
       function showresult() {
